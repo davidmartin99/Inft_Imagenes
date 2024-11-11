@@ -7,9 +7,11 @@ android {
     namespace = "com.example.inft_imagenes"
     compileSdk = 35
 
+
     defaultConfig {
         applicationId = "com.example.inft_imagenes"
         minSdk = 31
+        //noinspection ExpiredTargetSdkVersion
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -19,6 +21,7 @@ android {
             useSupportLibrary = true
         }
     }
+
 
     buildTypes {
         release {
@@ -49,6 +52,13 @@ android {
     }
 }
 
+// Aquí es donde agregamos la resolución de la versión de espresso-core
+configurations.all {
+    resolutionStrategy {
+        force("androidx.test.espresso:espresso-core:3.5.0")
+    }
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -60,13 +70,18 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     // Cargar imagenes de URL
-    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("io.coil-kt:coil-compose:2.7.0")
     implementation(libs.androidx.ui.test.android)
     testImplementation(libs.junit)
+
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
 }
+
+

@@ -14,13 +14,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.rememberImagePainter
 import com.example.inft_imagenes.ui.theme.Inft_ImagenesTheme
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.graphics.BlurEffect
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
@@ -52,11 +50,16 @@ fun PeliculasPrincipal(modifier: Modifier = Modifier) {
         Column(
             Modifier
             .width(360.dp)
-            .height(800.dp),
+            .height(900.dp),
+            verticalArrangement = Arrangement.spacedBy(0.dp, Alignment.CenterVertically),
+            horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
+            // Espacio
+            Spacer(modifier = Modifier.height(60.dp))
+
             // Row 1 con el cuadro azul y su titulo
-            Row(
+            Box(
                 Modifier
                     .padding(16.dp)
             ){
@@ -64,13 +67,17 @@ fun PeliculasPrincipal(modifier: Modifier = Modifier) {
 
             }//Fin Row 1 para Titulo
 
+            // Spacer to create space between the boxes
+            Spacer(modifier = Modifier.height(40.dp)) // Adjust height for spacing
+
             //Box para las peliculas
             Column(
                 Modifier
                     .width(360.dp)
                     .height(800.dp)
                     .background(Color.Red)
-                    .fillMaxWidth() // Ensure this Column takes the full width
+                    .fillMaxWidth()
+                    .fillMaxHeight()// Ensure this Column takes the full width
 
             ){
 
@@ -99,44 +106,92 @@ fun PeliculasPrincipal(modifier: Modifier = Modifier) {
 //Funcion para la primera Row de peliculas
 @Composable
 fun pelis1 (modifier: Modifier = Modifier){
-    Box(
+    Row(
         Modifier
-            .background(Color.Blue) // QUITARRRRR
+            .background(Color.White)
             .border(width = 0.dp, color = Color(0xFF000000))
             .width(360.dp)
             .height(193.dp)
-    ){
+            .fillMaxSize(),
+        horizontalArrangement = Arrangement.SpaceBetween
 
-    }
+
+    ){
+        //1 Column FLORERO
+        ImagenTitulo(
+            imageRes = R.drawable.ramo,  // Reemplaza con el recurso de imagen que desees
+            title = "El Florero"
+        )
+
+
+        //2 Column BOSQUE
+        ImagenTitulo(
+            imageRes = R.drawable.bosque,  // Reemplaza con el recurso de imagen que desees
+            title = "El Bosque"
+        )
+
+    }//Fin 1Box
 }//Fin pelis1
 
 
 //Funcion para la segunda Row de peliculas
 @Composable
 fun pelis2 (modifier: Modifier = Modifier){
-    Box(
+    Row(
         Modifier
-            .background(Color.Yellow) // QUITARRRRR
+            .background(Color.White)
             .border(width = 0.dp, color = Color(0xFF000000))
             .width(360.dp)
             .height(193.dp)
-    ){
+            .fillMaxSize(),
+        horizontalArrangement = Arrangement.SpaceBetween
 
-    }
+
+    ){
+        //1 Column FLORERO
+        ImagenTitulo(
+            imageRes = R.drawable.ramo,  // Reemplaza con el recurso de imagen que desees
+            title = "Otro Bosque"
+        )
+
+
+        //2 Column BOSQUE
+        ImagenTitulo(
+            imageRes = R.drawable.bosque,  // Reemplaza con el recurso de imagen que desees
+            title = "Tulipanes"
+        )
+
+    }//Fin 1Box
 }//Fin pelis2
 
 //Funcion para la tercera Row de peliculas
 @Composable
 fun pelis3 (modifier: Modifier = Modifier){
-    Box(
+    Row(
         Modifier
-            .background(Color.Blue) // QUITARRRRR
+            .background(Color.White)
             .border(width = 0.dp, color = Color(0xFF000000))
             .width(360.dp)
             .height(193.dp)
-    ){
+            .fillMaxSize(),
+        horizontalArrangement = Arrangement.SpaceBetween
 
-    }
+
+    ){
+        //1 Column FLORERO
+        ImagenTitulo(
+            imageRes = R.drawable.ramo,  // Reemplaza con el recurso de imagen que desees
+            title = "Clase"
+        )
+
+
+        //2 Column BOSQUE
+        ImagenTitulo(
+            imageRes = R.drawable.bosque,  // Reemplaza con el recurso de imagen que desees
+            title = "Rugby"
+        )
+
+    }//Fin 1Box
 }//Fin pelis3
 
 
@@ -158,7 +213,7 @@ fun TopBar (tittle:String){
             text = "Mis Películas",
             color = Color(0xFF354699),  // White text color
             style = TextStyle(
-                fontSize = 24.sp,  // Adjust font size as needed
+                fontSize = 50.sp,  // Adjust font size as needed
                 fontWeight = FontWeight.Bold
             ),
             modifier = Modifier
@@ -167,6 +222,42 @@ fun TopBar (tittle:String){
         )//Fin Text Titulo "Mis Películas"
     }
 }//Fin TopBar
+
+
+
+@Composable
+fun ImagenTitulo(
+    imageRes: Int,  // Parámetro para el recurso de imagen
+    title: String   // Parámetro para el texto del título
+) {
+    Column(
+        modifier = Modifier
+            .padding(0.dp)
+            .width(175.dp)
+            .fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Imagen
+        Image(
+            painter = painterResource(id = imageRes),
+            contentDescription = title,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(160.dp) // Ajusta la altura según sea necesario
+        )
+
+        // Título
+        Text(
+            text = title,
+            style = TextStyle(
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            ),
+            modifier = Modifier
+                .padding(3.dp)
+        )
+    }
+}
 
 
 //Funcion Preview
