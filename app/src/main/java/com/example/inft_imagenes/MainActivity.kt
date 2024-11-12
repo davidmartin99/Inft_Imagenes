@@ -150,14 +150,14 @@ fun pelis2 (modifier: Modifier = Modifier){
     ){
         //1 Column FLORERO
         ImagenTitulo(
-            imageRes = R.drawable.ramo,  // Reemplaza con el recurso de imagen que desees
+            imageRes = R.drawable.otrobosque,  // Reemplaza con el recurso de imagen que desees
             title = "Otro Bosque"
         )
 
 
         //2 Column BOSQUE
         ImagenTitulo(
-            imageRes = R.drawable.bosque,  // Reemplaza con el recurso de imagen que desees
+            imageRes = R.drawable.tulipanes,  // Reemplaza con el recurso de imagen que desees
             title = "Tulipanes"
         )
 
@@ -180,14 +180,14 @@ fun pelis3 (modifier: Modifier = Modifier){
     ){
         //1 Column FLORERO
         ImagenTitulo(
-            imageRes = R.drawable.ramo,  // Reemplaza con el recurso de imagen que desees
+            imageRes = R.drawable.clase,  // Reemplaza con el recurso de imagen que desees
             title = "Clase"
         )
 
 
         //2 Column BOSQUE
         ImagenTitulo(
-            imageRes = R.drawable.bosque,  // Reemplaza con el recurso de imagen que desees
+            imageRes = R.drawable.rugby,  // Reemplaza con el recurso de imagen que desees
             title = "Rugby"
         )
 
