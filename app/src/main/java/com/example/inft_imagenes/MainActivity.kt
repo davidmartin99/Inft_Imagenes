@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
+}//Fin MainActivity
 
 @Composable
 fun PeliculasPrincipal(modifier: Modifier = Modifier) {
@@ -56,7 +56,7 @@ fun PeliculasPrincipal(modifier: Modifier = Modifier) {
 
         ) {
             // Espacio
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(50.dp))
 
             // Row 1 con el cuadro azul y su titulo
             Box(
@@ -68,7 +68,7 @@ fun PeliculasPrincipal(modifier: Modifier = Modifier) {
             }//Fin Row 1 para Titulo
 
             // Spacer to create space between the boxes
-            Spacer(modifier = Modifier.height(40.dp)) // Adjust height for spacing
+            Spacer(modifier = Modifier.height(50.dp)) // Adjust height for spacing
 
             //Box para las peliculas
             Column(
@@ -120,14 +120,16 @@ fun pelis1 (modifier: Modifier = Modifier){
         //1 Column FLORERO
         ImagenTitulo(
             imageRes = R.drawable.ramo,  // Reemplaza con el recurso de imagen que desees
-            title = "El Florero"
+            title = "El Florero",
+            imagePlay = R.drawable.play
         )
 
 
         //2 Column BOSQUE
         ImagenTitulo(
             imageRes = R.drawable.bosque,  // Reemplaza con el recurso de imagen que desees
-            title = "El Bosque"
+            title = "El Bosque",
+            imagePlay = R.drawable.play
         )
 
     }//Fin 1Box
@@ -151,14 +153,16 @@ fun pelis2 (modifier: Modifier = Modifier){
         //1 Column FLORERO
         ImagenTitulo(
             imageRes = R.drawable.otrobosque,  // Reemplaza con el recurso de imagen que desees
-            title = "Otro Bosque"
+            title = "Otro Bosque",
+            imagePlay = R.drawable.play
         )
 
 
         //2 Column BOSQUE
         ImagenTitulo(
             imageRes = R.drawable.tulipanes,  // Reemplaza con el recurso de imagen que desees
-            title = "Tulipanes"
+            title = "Tulipanes",
+            imagePlay = R.drawable.play
         )
 
     }//Fin 1Box
@@ -181,14 +185,16 @@ fun pelis3 (modifier: Modifier = Modifier){
         //1 Column FLORERO
         ImagenTitulo(
             imageRes = R.drawable.clase,  // Reemplaza con el recurso de imagen que desees
-            title = "Clase"
+            title = "Clase",
+            imagePlay = R.drawable.play
         )
 
 
         //2 Column BOSQUE
         ImagenTitulo(
             imageRes = R.drawable.rugby,  // Reemplaza con el recurso de imagen que desees
-            title = "Rugby"
+            title = "Rugby",
+            imagePlay = R.drawable.play
         )
 
     }//Fin 1Box
@@ -228,6 +234,7 @@ fun TopBar (tittle:String){
 @Composable
 fun ImagenTitulo(
     imageRes: Int,  // Parámetro para el recurso de imagen
+    imagePlay: Int, // Parámetro para la imagen PLAY
     title: String   // Parámetro para el texto del título
 ) {
     Column(
@@ -237,14 +244,31 @@ fun ImagenTitulo(
             .fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Imagen
-        Image(
-            painter = painterResource(id = imageRes),
-            contentDescription = title,
+        // Box para apilar la imagen de fondo y el ícono de play
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(160.dp) // Ajusta la altura según sea necesario
-        )
+        ) {
+            // Imagen de fondo
+            Image(
+                painter = painterResource(id = imageRes),
+                contentDescription = title,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(160.dp) // Ajusta la altura según sea necesario
+            )
+
+            // Imagen PLAY centrada y más pequeña
+            Image(
+                painter = painterResource(id = imagePlay),
+                contentDescription = title,
+                modifier = Modifier
+                    .align(Alignment.Center) // Centra la imagen de Play
+                    .width(95.dp)            // Tamaño más pequeño
+                    .height(88.dp)           // Tamaño más pequeño
+            )
+        }//Fin Box con imagenes
 
         // Título
         Text(
@@ -257,10 +281,10 @@ fun ImagenTitulo(
                 .padding(3.dp)
         )
     }
-}
+}//Fin ImagenTitulo
 
 
-//Funcion Preview
+//Funcion Preview para visualizar la interfaz
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
